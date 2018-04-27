@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180331054838) do
+ActiveRecord::Schema.define(version: 20180427145838) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,8 @@ ActiveRecord::Schema.define(version: 20180331054838) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "primecategory_id"
+    t.index ["primecategory_id"], name: "index_categories_on_primecategory_id"
   end
 
   create_table "items", force: :cascade do |t|
@@ -28,14 +30,17 @@ ActiveRecord::Schema.define(version: 20180331054838) do
     t.string "course"
     t.integer "price_of_course"
     t.string "currency"
-    t.datetime "date"
     t.text "description_of_course"
     t.text "teachers"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "category_id"
     t.bigint "subcategory_id"
+    t.bigint "primecategory_id"
+    t.date "date"
+    t.time "time"
     t.index ["category_id"], name: "index_items_on_category_id"
+    t.index ["primecategory_id"], name: "index_items_on_primecategory_id"
     t.index ["subcategory_id"], name: "index_items_on_subcategory_id"
   end
 
@@ -51,8 +56,13 @@ ActiveRecord::Schema.define(version: 20180331054838) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "category_id"
+    t.index ["category_id"], name: "index_subcategories_on_category_id"
   end
 
+  add_foreign_key "categories", "primecategories"
   add_foreign_key "items", "categories"
+  add_foreign_key "items", "primecategories"
   add_foreign_key "items", "subcategories"
+  add_foreign_key "subcategories", "categories"
 end

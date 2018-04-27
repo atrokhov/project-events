@@ -1,4 +1,3 @@
 class Subcategory < ApplicationRecord
-	# has_many :items
-	# belongs_to :category
+	has_many :items
 end

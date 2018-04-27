@@ -12,6 +12,11 @@
   <% end %>
 
   <div class="field">
+    <%= form.label :primecategory_id, "Высшая категория" %>
+    <%= form.collection_select(:primecategory_id, Primecategory.all, :id, :name) %>
+  </div>
+
+  <div class="field">
     <%= form.label :name %>
     <%= form.text_field :name, id: :category_name %>
   </div>
