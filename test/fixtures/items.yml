@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  description: MyText
+  course: MyString
+  price_of_course: 1
+  currency: MyString
+  date: 2018-03-21 15:24:04
+  description_of_course: MyText
+  teachers: MyText
+
+two:
+  name: MyString
+  description: MyText
+  course: MyString
+  price_of_course: 1
+  currency: MyString
+  date: 2018-03-21 15:24:04
+  description_of_course: MyText
+  teachers: MyText

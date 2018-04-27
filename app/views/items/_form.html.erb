@@ -1,0 +1,62 @@
+<%= form_with(model: item, local: true) do |form| %>
+  <% if item.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(item.errors.count, "error") %> prohibited this item from being saved:</h2>
+
+      <ul>
+      <% item.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :item_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description, id: :item_description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :course %>
+    <%= form.text_field :course, id: :item_course %>
+  </div>
+
+  <div class="field">
+    <%= form.label :price_of_course %>
+    <%= form.number_field :price_of_course, id: :item_price_of_course %>
+  </div>
+
+  <div class="field">
+    <%= form.label :currency %>
+    <%= form.text_field :currency, id: :item_currency %>
+  </div>
+
+  <div class="field">
+    <%= form.label :date %>
+    <%= form.datetime_select :date, id: :item_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description_of_course %>
+    <%= form.text_area :description_of_course, id: :item_description_of_course %>
+  </div>
+
+  <div class="field">
+    <%= form.label :teachers %>
+    <%= form.text_area :teachers, id: :item_teachers %>
+  </div>
+
+  <div class="field">
+    <%= form.label :category_id %>
+    <%= form.collection_select(:item_category_id, Category.all, :id, :name) %>
+  </div>  
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
