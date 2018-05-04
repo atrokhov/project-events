@@ -33,6 +33,9 @@ gem 'simple_form'
 gem 'devise'
 gem 'russian'
 gem 'paperclip'
+gem 'bootstrap-sass'
+gem 'sass-rails', '~> 5.0'
+gem 'jquery-rails'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

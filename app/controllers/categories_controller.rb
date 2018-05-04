@@ -1,10 +1,9 @@
 class CategoriesController < ApplicationController
-  before_action :set_category, only: [:show, :edit, :update, :destroy]
+  before_action :set_category, only: [:index_category, :show, :edit, :update, :destroy]
 
   # GET /categories
   # GET /categories.json
   def index
-    @primecategories = Primecategory.all
     @categories = Category.all
   end
 
@@ -62,10 +61,16 @@ class CategoriesController < ApplicationController
     end
   end
 
+  def index_category
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_category
       @category = Category.find(params[:id])
+      Item.all.each do |item|
+        if item.category_id = @category
+          @item 
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

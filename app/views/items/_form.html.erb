@@ -13,18 +13,13 @@
 
   <div class="field">
     <%= form.label :primecategory_id, "Высшая категория" %>
-    <%= form.collection_select(:primecategory_id, Primecategory.all, :id, :name) %>
+    <%= form.collection_select(:primecategory_id, Primecategory.order(:name), :id, :name) %>
   </div>
 
   <div class="field">
     <%= form.label :category_id, "Категория" %>
-    <%= form.collection_select(:category_id, Category.all, :id, :name) %>
+    <%= form.grouped_collection_select :category_id, Primecategory.order(:name), :categories, :name, :id, :name %>
   </div>
-
-  <div class="field">
-    <%= form.label :subcategory_id, "Подкатегория" %>
-    <%= form.collection_select(:subcategory_id, Subcategory.all, :id, :name) %>
-  </div>    
 
   <div class="field">
     <%= form.label :name, "Название" %>
