@@ -1,14 +1,21 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @category.name %>
-</p>
+<h1><%= @category.name %></h1>
 
-<p>
-  <strong>Description:</strong>
-  <%= @category.description %>
-</p>
+<div class="row">
+  <% Item.all.each do |item| %>
+  <% if item.category_id == @category.id %>
+  <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3">
+    <div class="thumbnail">
+      <img src="..." alt="...">
+      <div class="caption">
+        <h3><%= item.name %></h3>
+        <p><%= item.description %></p>
+        <p><%= link_to 'Читать далее...', item, class: "btn btn-primary", role: "button" %> <%= link_to 'Изменить', edit_item_path(item),class: "btn btn-default", role: "button" %> <%= link_to 'Удалить', item, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default", role: "button" %></p>
+      </div>
+      <% end %>
+    </div>
+  </div>
+  <% end %>
+</div>
 
-<%= link_to 'Edit', edit_category_path(@category) %> |
-<%= link_to 'Back', categories_path %>

@@ -12,57 +12,57 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :primecategory_id, "Высшая категория" %>
-    <%= form.collection_select(:primecategory_id, Primecategory.order(:name), :id, :name) %>
+    <%= form.label :primecategory_id, "Высшая категория" %></br>
+    <%= form.collection_select(:primecategory_id, Primecategory.order(:name), :id, :name, {:prompt => "Выберите надкатегорию"}, {:id => "primecategory_selection"}) %>
   </div>
 
   <div class="field">
-    <%= form.label :category_id, "Категория" %>
-    <%= form.grouped_collection_select :category_id, Primecategory.order(:name), :categories, :name, :id, :name %>
+    <%= form.label :category_id, "Категория" %></br>
+    <%= form.grouped_collection_select(:category_id, Primecategory.order(:name), :categories, :name, :id, :name, {:prompt => "Выберите категорию"}, {:id => "category_selection", :multiple => :multiple, :size => 15}) %>
   </div>
 
   <div class="field">
-    <%= form.label :name, "Название" %>
+    <%= form.label :name, "Название" %></br>
     <%= form.text_field :name, id: :item_name %>
   </div>
 
   <div class="field">
-    <%= form.label :description, "Описание" %>
+    <%= form.label :description, "Описание" %></br>
     <%= form.text_area :description, id: :item_description %>
   </div>
 
   <div class="field">
-    <%= form.label :course, "Курс" %>
+    <%= form.label :course, "Курс" %></br>
     <%= form.text_field :course, id: :item_course %>
   </div>
 
   <div class="field">
-    <%= form.label :price_of_course, "Цена" %>
+    <%= form.label :price_of_course, "Цена" %></br>
     <%= form.number_field :price_of_course, id: :item_price_of_course %>
   </div>
 
   <div class="field">
-    <%= form.label :currency, "Валюта" %>
+    <%= form.label :currency, "Валюта" %></br>
     <%= form.text_field :currency, id: :item_currency %>
   </div>
 
   <div class="field">
-    <%= form.label :date, "Дата начала" %>
+    <%= form.label :date, "Дата начала" %></br>
     <%= form.date_select :date, id: :item_date %>
   </div>
 
   <div class="field">
-    <%= form.label :time, "Время начала" %>
+    <%= form.label :time, "Время начала" %></br>
     <%= form.time_select :time, id: :item_time %>
   </div>
 
   <div class="field">
-    <%= form.label :description_of_course, "Описание курса" %>
+    <%= form.label :description_of_course, "Описание курса" %></br>
     <%= form.text_area :description_of_course, id: :item_description_of_course %>
   </div>
 
   <div class="field">
-    <%= form.label :teachers, "Учителя" %>
+    <%= form.label :teachers, "Учителя" %></br>
     <%= form.text_area :teachers, id: :item_teachers %>
   </div>
 

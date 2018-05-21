@@ -11,7 +11,9 @@
 // about supported directives.
 //
 //= require rails-ujs
-//= require turbolinks
-//= require_tree .
 //= require jquery
+//= require jquery_ujs
+//= require turbolinks
+//= require items
+//= require_tree .
 //= require bootstrap-sprockets

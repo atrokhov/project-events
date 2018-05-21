@@ -62,15 +62,15 @@ class CategoriesController < ApplicationController
   end
 
   def index_category
+    @items = Item.all
   end
+
+ 
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_category
       @category = Category.find(params[:id])
-      Item.all.each do |item|
-        if item.category_id = @category
-          @item 
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
