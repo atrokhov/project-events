@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <p>
   <strong>Name:</strong>
   <%= @item.name %>
@@ -42,8 +40,17 @@
 
 <p>
   <strong>Category:</strong>
-  <%= @item.category_id %>
+  <%= @item.category_ids %>
 </p>
 
-<%= link_to 'Edit', edit_item_path(@item) %> |
+<h2><%= link_to 'Комментарии', '#', id: 'comments-link' %></h2>
+  <div id="comment-section">
+    <ol>
+      <%= render @item.comments %>
+    </ol>
+    <h3>Добавить комментарий:</h3>
+    <%= render 'comments/form' %>
+  </div>
+
+
 <%= link_to 'Back', items_path %>

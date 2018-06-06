@@ -1,0 +1,55 @@
+<h2>Edit <%= resource_name.to_s.humanize %></h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name, "Имя:" %></br>
+    <%= f.text_field :name, required: true, autofocus: true %> </br>
+  </div>
+  <div class="field">
+    <%= f.label :surname, "Фамилия:" %></br>
+    <%= f.text_field :surname, required: true %> </br>
+  </div>
+  <div class="field">
+    <%= f.label :sex, "Пол:" %></br>
+    <%= f.collection_radio_buttons(:sex, [["Мужской", "Мужской"], ["Женский", "Женский"]], :first, :last) do |b| %>
+      <%= b.label { b.radio_button + b.text } %> </br>
+    <% end %>
+  </div>
+  <div class="field">
+    <%= f.label :email, "Электронная почта:" %></br>
+    <%= f.text_field :email, required: true %> </br>
+  </div>
+  <div class="field">
+    <%= f.label :password, "Пароль:" %></br>
+    <%= f.password_field :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %> </br>
+  </div>
+  <div class="field">
+    <%= f.label :password_confirmation, "Подвердите пароль:" %></br>
+    <%= f.password_field :password_confirmation, required: true %> </br>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Зарегестрироваться"%>
+  </div>
+
+  <%= current_user.admin? %>
+<% end %>
+
+
+<h3>Cancel my account</h3>
+
+<p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+
+<%= link_to "Back", :back %>

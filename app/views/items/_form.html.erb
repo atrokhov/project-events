@@ -18,7 +18,7 @@
 
   <div class="field">
     <%= form.label :category_id, "Категория" %></br>
-    <%= form.grouped_collection_select(:category_id, Primecategory.order(:name), :categories, :name, :id, :name, {:prompt => "Выберите категорию"}, {:id => "category_selection", :multiple => :multiple, :size => 15}) %>
+    <%= form.grouped_collection_select(:category_ids, Primecategory.order(:name), :categories, :name, :id, :name, {:prompt => "Выберите категорию"}, {:id => "category_selection", :multiple => :multiple, :size => 15}) %>
   </div>
 
   <div class="field">

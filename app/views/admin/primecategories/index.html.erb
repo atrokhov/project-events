@@ -1,0 +1,32 @@
+<div class="panel panel-default">
+  <div class="panel-heading">Надкатегории</div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Название</th>
+        <th>Описание</th>
+        <th colspan="3">Действия</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @primecategories.each do |primecategory| %>
+        <tr>
+          <td><%= primecategory.name %></td>
+          <td><%= primecategory.description %></td>
+          <td><%= link_to 'Show', [:admin, primecategory], class: "btn btn-primary" %></td>
+          <td><%= link_to 'Edit', edit_admin_primecategory_path(primecategory), class: "btn btn-info" %></td>
+          <td><%= link_to 'Destroy', [:admin, primecategory], method: :delete, data: { confirm: 'Вы уверены?' }, class: "btn btn-danger" %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<table>
+  
+</table>
+
+<br>
+
+<%= link_to 'Новая надкатегория', new_admin_primecategory_path %>

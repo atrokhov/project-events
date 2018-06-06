@@ -1,0 +1,37 @@
+<%= form_with(model: [:admin, category], local: true) do |form| %>
+  <div class="alert alert-danger" role="alert">
+    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+    <span class="sr-only">Error:</span>
+      <% if category.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(category.errors.count, "error") %> prohibited this category from being saved:</h2>
+
+        <ul>
+        <% category.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+  </div>
+  
+
+  <div class="field">
+    <%= form.label :primecategory_id, "Высшая категория" %>
+    <%= form.collection_select(:primecategory_id, Primecategory.all, :id, :name) %>
+  </div>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :category_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description, id: :category_description %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

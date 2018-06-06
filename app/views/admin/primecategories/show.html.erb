@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @primecategory.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @primecategory.description %>
+</p>
+
+<%= link_to 'Edit', edit_admin_primecategory_path(@primecategory) %> |
+<%= link_to 'Back', admin_primecategories_path %>

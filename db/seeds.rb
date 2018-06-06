@@ -7,9 +7,4 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-prime_category = Primecategory.create(name: 'Cool', description: 'coolest')
-category1 = Category.create(name: 'Cool category', description: "cool")
-category2 = Category.create(name: 'Not cool category', description: "not cool")
-sub_category1 = Subcategory.create(name: 'Cool subcategory', description: "cool")
-sub_category2 = Subcategory.create(name: 'Not cool category', description: "not cool")
-item = Item.create(name: 'Cool item', description: 'Cool', course: 'Cool course', price_of_course: 100, currency: '$', date: '13.02.2014', description_of_course: "Coolest course", teachers: "Coolest teachers")
+admin = User.create(name: "admin", surname: "root", sex: "Мужской", admin: true, moderator: false, email: "admin@project.com", password: "123456", password_confirmation: "123456")

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180427145838) do
+ActiveRecord::Schema.define(version: 20180604093547) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,24 @@ ActiveRecord::Schema.define(version: 20180427145838) do
     t.index ["primecategory_id"], name: "index_categories_on_primecategory_id"
   end
 
+  create_table "comments", force: :cascade do |t|
+    t.string "author"
+    t.text "body"
+    t.bigint "item_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["item_id"], name: "index_comments_on_item_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "item_categories", force: :cascade do |t|
+    t.integer "item_id"
+    t.integer "category_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "items", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -34,14 +52,10 @@ ActiveRecord::Schema.define(version: 20180427145838) do
     t.text "teachers"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "category_id"
-    t.bigint "subcategory_id"
     t.bigint "primecategory_id"
     t.date "date"
     t.time "time"
-    t.index ["category_id"], name: "index_items_on_category_id"
     t.index ["primecategory_id"], name: "index_items_on_primecategory_id"
-    t.index ["subcategory_id"], name: "index_items_on_subcategory_id"
   end
 
   create_table "primecategories", force: :cascade do |t|
@@ -51,18 +65,30 @@ ActiveRecord::Schema.define(version: 20180427145838) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "subcategories", force: :cascade do |t|
+  create_table "users", force: :cascade do |t|
     t.string "name"
-    t.text "description"
+    t.string "surname"
+    t.string "sex"
+    t.boolean "admin", default: false
+    t.boolean "moderator", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "category_id"
-    t.index ["category_id"], name: "index_subcategories_on_category_id"
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer "sign_in_count", default: 0, null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.inet "current_sign_in_ip"
+    t.inet "last_sign_in_ip"
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "categories", "primecategories"
-  add_foreign_key "items", "categories"
+  add_foreign_key "comments", "items"
+  add_foreign_key "comments", "users"
   add_foreign_key "items", "primecategories"
-  add_foreign_key "items", "subcategories"
-  add_foreign_key "subcategories", "categories"
 end

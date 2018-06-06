@@ -1,0 +1,27 @@
+<%= form_with(model: [:admin, primecategory], local: true) do |form| %>
+  <% if primecategory.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(primecategory.errors.count, "error") %> prohibited this primecategory from being saved:</h2>
+
+      <ul>
+      <% primecategory.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :primecategory_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description, id: :primecategory_description %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
