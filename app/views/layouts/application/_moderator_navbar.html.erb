@@ -7,15 +7,26 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <%= link_to 'Admin Brand', admin_items_path, class: "navbar-brand" %>
+      <%= link_to 'ModeratorEvents', moderator_items_path, class: "navbar-brand" %>
     </div>
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><%= link_to 'Надкатегории', admin_primecategories_path %></li>
-        <li><%= link_to 'Категории', admin_categories_path %></li>
-        <li><%= link_to 'Артикли', admin_items_path %></li>
-        <li><%= link_to 'Пользователи', admin_users_path %></li>
+        <% Primecategory.all.each do |primecategory| %>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= primecategory.name %> <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li role="separator" class="divider"></li>
+            <% Category.all.each do |category| %>
+              <% if category.primecategory_id == primecategory.id %>
+              <li><%= link_to category.name, [:moderator, category] %></li>
+              <% end %>
+            <% end %>
+            <li role="separator" class="divider"></li>
+          </ul>
+        </li>
+        <% end %>
+      </ul>
       <form class="navbar-form navbar-left">
         <div class="form-group">
           <input type="text" class="form-control" placeholder="Search">
@@ -23,7 +34,7 @@
         <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search", aria-hidden="true"></span></button>
       </form>
       <ul class="nav navbar-nav navbar-right">
-       <% if user_signed_in? %>
+        <% if user_signed_in? %>
           <li role="presentation" class="dropdown">
             <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
               <strong><%= current_user.name %></strong><span class="caret"></span>

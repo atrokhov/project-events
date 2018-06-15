@@ -33,7 +33,7 @@
   </div>
   <div class="field">
     <%= f.label :password, "Пароль:" %></br>
-    <%= f.password_field :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %> </br>
+    <%= f.password_field :password, required: true, hint: ("Минимум #{@minimum_password_length} символов" if @minimum_password_length) %> </br>
   </div>
   <div class="field">
     <%= f.label :password_confirmation, "Подвердите пароль:" %></br>
@@ -43,13 +43,11 @@
   <div class="actions">
     <%= f.submit "Зарегестрироваться"%>
   </div>
-
-  <%= current_user.admin? %>
 <% end %>
 
 
-<h3>Cancel my account</h3>
+<h3>Удалить аккаунт</h3>
 
-<p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+<p>Не понравилось? <%= link_to "Удалить аккаунт", registration_path(resource_name), data: { confirm: "Вы уверены?" }, method: :delete %></p>
 
 <%= link_to "Back", :back %>

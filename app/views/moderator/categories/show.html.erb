@@ -1,0 +1,24 @@
+<h1><%= @category.name %></h1>
+
+<div class="row">
+  <div class="col-sm-6 col-md-4">
+    <%= link_to 'New Item', new_moderator_item_path, class: "btn btn-success", role: "button"%>
+  </div>
+</div>
+
+<div class="row">
+  <% Item.all.each do |item| %>
+    <% if item.category_ids.include?(@category.id) %>
+    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3">
+      <div class="thumbnail">
+        <img src="..." alt="...">
+        <div class="caption">
+          <h3><%= item.name %></h3>
+          <p><%= item.description %></p>
+          <p><%= link_to 'Читать далее...', [:moderator, item], class: "btn btn-primary", role: "button" %></p>
+        </div>
+        <% end %>
+    </div>
+  </div>
+  <% end %>
+</div>

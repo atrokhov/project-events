@@ -6,5 +6,5 @@
     <h4 class="media-heading"><strong><%= comment.user.name %></strong> написал:</h4>
     <%= comment.body %>
   </div>
-  
+ <%= link_to 'Destroy', admin_item_comment_path(@item, comment), method: :delete, data: { confirm: 'Are you sure?' } %>
 </div>

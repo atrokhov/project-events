@@ -1,3 +1,5 @@
+<p id="notice"><%= notice %></p>
+
 <p>
   <strong>Name:</strong>
   <%= @item.name %>
@@ -48,13 +50,8 @@
     <ol>
       <%= render @item.comments %>
     </ol>
-    <% if user_signed_in? %>
-      <h3>Добавить комментарий:</h3>
-      <%= render 'comments/form' %>
-    <% else %>
-      <p>Sign in</p>
-    <% end %>
+    <h3>Добавить комментарий:</h3>
+    <%= render 'comments/form' %>
   </div>
 
-
-<%= link_to 'Back', items_path %>
+<%= link_to 'Back', moderator_items_path %>

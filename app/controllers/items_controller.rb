@@ -14,12 +14,12 @@ class ItemsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_item
-      @item = Item.find(params[:id])
-    end
+  def set_item
+    @item = Item.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def item_params
-      params.require(:item).permit(:name, :description, :course, :price_of_course, :currency, :date, :description_of_course, :teachers, :primecategory_id, category_ids: [])
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def item_params
+    params.require(:item).permit(:name, :description, :course, :price_of_course, :currency, :date, :description_of_course, :teachers, :primecategory_id, category_ids: [])
+  end
 end

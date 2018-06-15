@@ -11,6 +11,8 @@ class ApplicationController < ActionController::Base
 		if user_signed_in?
 			if current_user.admin?
 		    'admin_application'
+		  elsif current_user.moderator?
+		  	'moderator_application'
 		  else
 		    'application'
 		  end

@@ -1,0 +1,12 @@
+<%= form_for [@item, @item.comments.build] do |f| %>
+	<% if user_signed_in? %>
+		<%= f.hidden_field :user_id, value: current_user.id %>
+		<div>
+			Комментарий: <%= f.text_area :body %>
+		</div>
+		
+		<%= f.submit %>
+	<% else %>
+		<p>Sign in</p>
+	<% end %>
+<% end %>

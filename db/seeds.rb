@@ -8,3 +8,5 @@
 
 
 admin = User.create(name: "admin", surname: "root", sex: "Мужской", admin: true, moderator: false, email: "admin@project.com", password: "123456", password_confirmation: "123456")
+moderator = User.create(name: "moderator", surname: "root", sex: "Мужской", admin: false, moderator: true, email: "moderator@project.com", password: "123456", password_confirmation: "123456")
+user = User.create(name: "user", surname: "root", sex: "Мужской", admin: false, moderator: false, email: "user@project.com", password: "123456", password_confirmation: "123456")

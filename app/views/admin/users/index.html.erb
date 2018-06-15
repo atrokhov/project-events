@@ -1,0 +1,33 @@
+<div class="panel panel-default">
+  <div class="panel-heading">Пользователи</div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Имя</th>
+        <th>Фамилия</th>
+        <th>Email</th>
+        <th>Пол</th>
+        <th colspan="2">Действия</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= user.name %></td>
+          <td><%= user.surname %></td>
+          <td><%= user.email %></td>
+          <td><%= user.sex %></td>
+          <td><%= link_to 'Show', [:admin, user], class: "btn btn-primary" %></td>
+          <td><%= link_to 'Destroy', [:admin, user], method: :delete, data: { confirm: 'Вы уверены?' }, class: "btn btn-danger" %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<table>
+  
+</table>
+
+<br>

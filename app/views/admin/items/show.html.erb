@@ -45,5 +45,13 @@
   <%= @item.category_ids %>
 </p>
 
-<%= link_to 'Edit', edit_admin_item_path(@item) %> |
+<h2><%= link_to 'Комментарии', '#', id: 'comments-link' %></h2>
+  <div id="comment-section">
+    <ol>
+      <%= render @item.comments %>
+    </ol>
+    <h3>Добавить комментарий:</h3>
+    <%= render 'comments/form' %>
+  </div>
+
 <%= link_to 'Back', admin_items_path %>
